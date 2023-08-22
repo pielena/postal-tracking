@@ -7,6 +7,8 @@ import com.github.pielena.postal.tracking.service.PostOfficeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class PostOfficeServiceImpl implements PostOfficeService {
@@ -14,8 +16,7 @@ public class PostOfficeServiceImpl implements PostOfficeService {
     private final PostOfficeRepository postOfficeRepository;
 
     @Override
-    public PostOffice findByIndex(int index) {
-        return postOfficeRepository.findByIndex(index)
-                .orElseThrow(() -> new S404ResourceNotFoundException(PostOffice.class, index));
+    public Optional<PostOffice> findByIndex(int index) {
+        return postOfficeRepository.findByIndex(index);
     }
 }

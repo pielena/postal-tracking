@@ -4,6 +4,7 @@ import com.github.pielena.postal.tracking.dto.OperationDto;
 import com.github.pielena.postal.tracking.entity.Item;
 import com.github.pielena.postal.tracking.entity.Operation;
 import com.github.pielena.postal.tracking.entity.PostOffice;
+import com.github.pielena.postal.tracking.exception.S404ResourceNotFoundException;
 import com.github.pielena.postal.tracking.repository.OperationRepository;
 import com.github.pielena.postal.tracking.service.ItemService;
 import com.github.pielena.postal.tracking.service.OperationService;
@@ -33,8 +34,9 @@ public class OperationServiceImpl implements OperationService {
     @Transactional
     public Operation createOne(UUID itemId, OperationDto operationDto) {
 
-        Item item = itemService.getById(itemId);
-        PostOffice postOffice = postOfficeService.findByIndex(operationDto.getPostOfficeIndex());
+        Item item = itemService.getById(itemId).orElseThrow(() -> new S404ResourceNotFoundException(Item.class, itemId));
+        PostOffice postOffice = postOfficeService.findByIndex(operationDto.getPostOfficeIndex())
+                .orElseThrow(() -> new S404ResourceNotFoundException(PostOffice.class, operationDto.getPostOfficeIndex()));;
 
         Operation operation = Operation.builder()
                 .item(item)

@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -36,18 +37,22 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item getById(UUID id) {
-        return itemRepository.findById(id).orElseThrow(() -> new S404ResourceNotFoundException(Item.class, id));
+    public Optional<Item> getById(UUID id) {
+        return itemRepository.findById(id);
     }
 
     @Transactional
     @Override
     public Item create(ItemDtoRq itemDtoRq) {
-        Person recipient = personService.findByNameAndAddressDescription(itemDtoRq.getRecipientName(), itemDtoRq.getRecipientAddress());
-        Person sender = personService.findByNameAndIndex(itemDtoRq.getSenderName(), itemDtoRq.getSenderIndex());
+        Person recipient = personService.findByNameAndAddressDescription(itemDtoRq.getRecipientName(), itemDtoRq.getRecipientAddress())
+                .orElseThrow(() -> new S404ResourceNotFoundException(Person.class, itemDtoRq.getRecipientName() + " and address: " + itemDtoRq.getRecipientAddress()));
+        Person sender = personService.findByNameAndIndex(itemDtoRq.getSenderName(), itemDtoRq.getSenderIndex())
+                .orElseThrow(() -> new S404ResourceNotFoundException(Person.class, itemDtoRq.getSenderName() + " and index: " + itemDtoRq.getSenderIndex()));
 
-        PostOffice destinationPostOffice = postOfficeService.findByIndex(itemDtoRq.getRecipientIndex());
-        PostOffice senderPostOffice = postOfficeService.findByIndex(itemDtoRq.getSenderIndex());
+        PostOffice destinationPostOffice = postOfficeService.findByIndex(itemDtoRq.getRecipientIndex())
+                .orElseThrow(() -> new S404ResourceNotFoundException(PostOffice.class, itemDtoRq.getRecipientIndex()));
+        PostOffice senderPostOffice = postOfficeService.findByIndex(itemDtoRq.getSenderIndex())
+                .orElseThrow(() -> new S404ResourceNotFoundException(PostOffice.class, itemDtoRq.getSenderIndex()));
 
         Item item = Item.builder()
                 .type(itemDtoRq.getType())
