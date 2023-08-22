@@ -11,7 +11,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.List;
 
@@ -19,9 +18,9 @@ import java.util.List;
 @Table(name = "post_offices")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
 @Builder
-@ToString
 public class PostOffice {
 
     @Id
@@ -36,4 +35,12 @@ public class PostOffice {
 
     @OneToMany(mappedBy = "postOffice", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Operation> operationHistories;
+
+    @Override
+    public String toString() {
+        return "PostOffice{" +
+                "index=" + index +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

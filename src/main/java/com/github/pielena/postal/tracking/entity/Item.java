@@ -16,7 +16,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.List;
@@ -26,9 +25,9 @@ import java.util.UUID;
 @Table(name = "items")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
 @Builder
-@ToString
 public class Item {
 
     @Id
@@ -45,9 +44,9 @@ public class Item {
     @JoinColumn(name = "destination_post_office_index")
     private PostOffice destinationPostOffice;
 
-//    @ManyToOne
-//    @JoinColumn(name = "sender_id")
-//    private Person sender;
+    @ManyToOne
+    @JoinColumn(name = "sender_id")
+    private Person sender;
 
     @ManyToOne
     @JoinColumn(name = "recipient_id")
@@ -55,4 +54,11 @@ public class Item {
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Operation> operationHistory;
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                '}';
+    }
 }
