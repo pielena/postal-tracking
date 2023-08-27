@@ -1,4 +1,4 @@
-package com.github.pielena.postal.tracking.entity;
+package com.github.pielena.postal.tracking.persistence.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

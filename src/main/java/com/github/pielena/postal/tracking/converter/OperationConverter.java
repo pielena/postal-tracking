@@ -1,7 +1,8 @@
 package com.github.pielena.postal.tracking.converter;
 
 import com.github.pielena.postal.tracking.dto.OperationDto;
-import com.github.pielena.postal.tracking.entity.Operation;
+import com.github.pielena.postal.tracking.dto.PostOfficeType;
+import com.github.pielena.postal.tracking.persistence.entity.Operation;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,9 +12,8 @@ public class OperationConverter {
 
         return OperationDto.builder()
                 .id(operation.getId())
-                .itemId(operation.getItem().getId())
                 .postOfficeIndex(operation.getPostOffice().getIndex())
-                .postOfficeType(operation.isDestination() ? "destination" : "transit")
+                .postOfficeType(operation.isDestination() ? PostOfficeType.DESTINATION : PostOfficeType.TRANSIT)
                 .state(operation.getState())
                 .date(operation.getDate())
                 .build();

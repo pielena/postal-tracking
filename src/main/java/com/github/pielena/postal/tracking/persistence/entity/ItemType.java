@@ -1,4 +1,4 @@
-package com.github.pielena.postal.tracking.entity;
+package com.github.pielena.postal.tracking.persistence.entity;
 
 public enum ItemType {
     LETTER,

@@ -2,8 +2,8 @@ package com.github.pielena.postal.tracking.converter;
 
 import com.github.pielena.postal.tracking.dto.ItemDtoRs;
 import com.github.pielena.postal.tracking.dto.OperationDto;
-import com.github.pielena.postal.tracking.entity.Item;
-import com.github.pielena.postal.tracking.entity.Operation;
+import com.github.pielena.postal.tracking.persistence.entity.Item;
+import com.github.pielena.postal.tracking.persistence.entity.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
-package com.github.pielena.postal.tracking.repository;
+package com.github.pielena.postal.tracking.persistence.repository;
 
-import com.github.pielena.postal.tracking.entity.PostOffice;
+import com.github.pielena.postal.tracking.persistence.entity.PostOffice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

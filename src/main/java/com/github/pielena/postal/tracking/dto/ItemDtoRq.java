@@ -1,12 +1,11 @@
 package com.github.pielena.postal.tracking.dto;
 
-import com.github.pielena.postal.tracking.entity.ItemType;
+import com.github.pielena.postal.tracking.persistence.entity.ItemType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -22,5 +21,4 @@ public class ItemDtoRq {
     private int recipientIndex;
     private String recipientAddress;
     private String recipientName;
-    private List<OperationDto> operationHistory;
 }

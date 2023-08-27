@@ -1,7 +1,7 @@
 package com.github.pielena.postal.tracking.service;
 
 import com.github.pielena.postal.tracking.dto.ItemDtoRq;
-import com.github.pielena.postal.tracking.entity.Item;
+import com.github.pielena.postal.tracking.persistence.entity.Item;
 import org.springframework.data.domain.Page;
 
 import java.util.Optional;

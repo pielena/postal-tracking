@@ -1,7 +1,7 @@
 package com.github.pielena.postal.tracking.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.github.pielena.postal.tracking.entity.State;
+import com.github.pielena.postal.tracking.persistence.entity.State;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,9 +17,8 @@ import java.util.UUID;
 public class OperationDto {
 
     private UUID id;
-    private UUID itemId;
     private int postOfficeIndex;
-    private String postOfficeType;
+    private PostOfficeType postOfficeType;
     private State state;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime date;

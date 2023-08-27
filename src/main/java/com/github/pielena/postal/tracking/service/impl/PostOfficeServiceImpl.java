@@ -1,8 +1,7 @@
 package com.github.pielena.postal.tracking.service.impl;
 
-import com.github.pielena.postal.tracking.entity.PostOffice;
-import com.github.pielena.postal.tracking.exception.S404ResourceNotFoundException;
-import com.github.pielena.postal.tracking.repository.PostOfficeRepository;
+import com.github.pielena.postal.tracking.persistence.entity.PostOffice;
+import com.github.pielena.postal.tracking.persistence.repository.PostOfficeRepository;
 import com.github.pielena.postal.tracking.service.PostOfficeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

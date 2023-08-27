@@ -1,6 +1,6 @@
 package com.github.pielena.postal.tracking.dto;
 
-import com.github.pielena.postal.tracking.entity.ItemType;
+import com.github.pielena.postal.tracking.persistence.entity.ItemType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

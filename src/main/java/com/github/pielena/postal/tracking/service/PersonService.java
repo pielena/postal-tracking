@@ -1,6 +1,6 @@
 package com.github.pielena.postal.tracking.service;
 
-import com.github.pielena.postal.tracking.entity.Person;
+import com.github.pielena.postal.tracking.persistence.entity.Person;
 
 import java.util.Optional;
 

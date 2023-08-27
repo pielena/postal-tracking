@@ -1,7 +1,9 @@
-package com.github.pielena.postal.tracking.entity;
+package com.github.pielena.postal.tracking.persistence.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -15,16 +17,17 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "persons")
+@Table(name = "operations")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
 @Builder
 @ToString
-public class Person {
+public class Operation {
 
     @Id
     @GeneratedValue
@@ -32,10 +35,22 @@ public class Person {
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "name")
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;
 
     @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
+    @JoinColumn(name = "post_office_index")
+    private PostOffice postOffice;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "state")
+    private State state;
+
+    @Column(name = "is_destination")
+    private boolean isDestination;
+
+    @Column(name = "date")
+    private LocalDateTime date;
+
 }
