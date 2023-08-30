@@ -43,9 +43,8 @@ public class ItemControllerMockMvcUnitTest {
 
     @Test
     public void givenItemPage_whenGetItems_thenStatus200andItemPageReturned() throws Exception {
-
-        ItemDtoRs itemDtoRs = createTestItemDtoRs();
-        Page<ItemDtoRs> page = new PageImpl<>(List.of(itemDtoRs));
+        final ItemDtoRs itemDtoRs = createTestItemDtoRs();
+        final Page<ItemDtoRs> page = new PageImpl<>(List.of(itemDtoRs));
 
         when(itemDecorator.getAll(anyInt(), anyInt())).thenReturn(page);
 
@@ -59,9 +58,9 @@ public class ItemControllerMockMvcUnitTest {
     }
 
     @Test
-    public void givenItemDtoRq_whenAdd_thenStatus201andItemDtoRsReturned() throws Exception {
-        ItemDtoRq itemDtoRq = createTestItemDtoRq();
-        ItemDtoRs itemDtoRs = createTestItemDtoRs();
+    public void givenItemDtoRq_whenCreate_thenStatus201andItemDtoRsReturned() throws Exception {
+        final ItemDtoRq itemDtoRq = createTestItemDtoRq();
+        final ItemDtoRs itemDtoRs = createTestItemDtoRs();
 
         when(itemDecorator.createOne(itemDtoRq)).thenReturn(itemDtoRs);
 

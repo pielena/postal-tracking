@@ -28,7 +28,7 @@ class OperationResponseTest {
     public void shouldSerializeObject() throws IOException {
         assertNotNull(objectMapper);
 
-        OperationDto operationDto = OperationDto.builder()
+        final OperationDto operationDto = OperationDto.builder()
                 .id(UUID.randomUUID())
                 .postOfficeIndex(123456)
                 .postOfficeType(PostOfficeType.TRANSIT)
@@ -36,7 +36,7 @@ class OperationResponseTest {
                 .date(LocalDateTime.parse("2023-09-20T19:00:00.123"))
                 .build();
 
-        JsonContent<OperationDto> result = jacksonTester.write(operationDto);
+        final JsonContent<OperationDto> result = jacksonTester.write(operationDto);
 
         assertThat(result).hasJsonPathStringValue("$.id");
         assertThat(result).extractingJsonPathNumberValue("$.postOfficeIndex").isEqualTo(123456);

@@ -35,18 +35,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class OperationControllerMockMvcUnitTest {
 
     @MockBean
-    OperationDecorator operationDecorator;
+    private OperationDecorator operationDecorator;
 
     @Autowired
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @Test
     public void givenItemId_whenGetByItemId_thenStatus200andListOfOperationDtoReturned() throws Exception {
-        OperationDto operationDto = createTestOperationDto();
-        List<OperationDto> operationDtoList = List.of(operationDto, operationDto);
+        final OperationDto operationDto = createTestOperationDto();
+        final List<OperationDto> operationDtoList = List.of(operationDto, operationDto);
 
         when(operationDecorator.getByItemId(UUID.fromString("7af49324-d3a3-4550-9448-38f00103565b")))
                 .thenReturn(operationDtoList);
@@ -63,7 +63,7 @@ public class OperationControllerMockMvcUnitTest {
     }
 
     @Test
-    public void givenItemId_whenGetByNotExistingItem_thenStatus404anExceptionThrown() throws Exception {
+    public void givenItemId_whenGetByNotExistingItem_thenStatus404andErrorMessageReturned() throws Exception {
 
         when(operationDecorator.getByItemId(any()))
                 .thenThrow(new S404ResourceNotFoundException(Item.class, UUID.fromString("7af49324-d3a3-4550-9448-38f00103565c")));
@@ -78,7 +78,7 @@ public class OperationControllerMockMvcUnitTest {
 
     @Test
     public void givenItemIdAndOperationDto_whenCreate_thenStatus201andOperationDtoReturned() throws Exception {
-        OperationDto operationDto = createTestOperationDto();
+        final OperationDto operationDto = createTestOperationDto();
 
         when(operationDecorator.createOne(any(), any())).thenReturn(operationDto);
 
@@ -88,13 +88,13 @@ public class OperationControllerMockMvcUnitTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(content().json(objectMapper.writeValueAsString(operationDto)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists());
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists())
+                .andExpect(content().json(objectMapper.writeValueAsString(operationDto)));
     }
 
     @Test
-    public void givenItemIdAndOperationDto_whenCreateByNotExistingItem_thenStatus404anExceptionThrown() throws Exception {
-        OperationDto operationDto = createTestOperationDto();
+    public void givenItemIdAndOperationDto_whenCreateByNotExistingItem_thenStatus404andErrorMessageReturned() throws Exception {
+        final OperationDto operationDto = createTestOperationDto();
 
         when(operationDecorator.createOne(any(), any()))
                 .thenThrow(new S404ResourceNotFoundException(Item.class, UUID.fromString("7af49324-d3a3-4550-9448-38f00103565c")));
