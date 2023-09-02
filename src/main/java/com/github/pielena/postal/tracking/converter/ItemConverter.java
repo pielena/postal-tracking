@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
-import java.util.List;
+import java.util.NoSuchElementException;
 
 @Component
 @RequiredArgsConstructor
@@ -26,12 +26,12 @@ public class ItemConverter {
                 .recipientName(item.getRecipient().getName())
                 .build();
 
-        List<OperationDto> operationHistory = item.getOperationHistory().stream()
-                .sorted(Comparator.comparing(Operation::getDate))
+        OperationDto operationDto = item.getOperationHistory().stream()
+                .max(Comparator.comparing(Operation::getDate))
                 .map(operationConverter::entityToDto)
-                .toList();
+                .orElseThrow(NoSuchElementException::new);
 
-        itemDtoRs.setOperationHistory(operationHistory);
+        itemDtoRs.setOperationDto(operationDto);
 
         return itemDtoRs;
     }

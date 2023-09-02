@@ -93,7 +93,7 @@ public class ItemControllerMockMvcUnitTest {
                 .recipientIndex(123456)
                 .recipientAddress("Spring Street, 22")
                 .recipientName("Anna")
-                .operationHistory(List.of(createTestOperationDto()))
+                .operationDto(createTestOperationDto())
                 .build();
     }
 

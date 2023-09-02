@@ -59,11 +59,10 @@ class ItemControllerTestIT extends AbstractIntegrationTest {
                 .andExpect(jsonPath("$.recipientIndex").value("123456"))
                 .andExpect(jsonPath("$.recipientAddress").value("Spring Street, 22"))
                 .andExpect(jsonPath("$.recipientName").value("Elena"))
-                .andExpect(jsonPath("$.operationHistory").exists())
-                .andExpect(jsonPath("$.operationHistory").isArray())
-                .andExpect(jsonPath("$.operationHistory[0].state").value("REGISTERED"))
-                .andExpect(jsonPath("$.operationHistory[0].postOfficeType").value("TRANSIT"))
-                .andExpect(jsonPath("$.operationHistory[0].postOfficeIndex").value(753614));
+                .andExpect(jsonPath("$.operationDto").exists())
+                .andExpect(jsonPath("$.operationDto.state").value("REGISTERED"))
+                .andExpect(jsonPath("$.operationDto.postOfficeType").value("TRANSIT"))
+                .andExpect(jsonPath("$.operationDto.postOfficeIndex").value(753614));
     }
 
     private ItemDtoRq createTestItemDtoRq() {

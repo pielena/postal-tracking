@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 import java.util.UUID;
 
 @Schema(description = "Response Postal item DTO")
@@ -35,6 +34,6 @@ public class ItemDtoRs {
     @Schema(description = "recipient name", example = "Anna Volkova")
     private String recipientName;
 
-    @Schema(description = "tracking history")
-    private List<OperationDto> operationHistory;
+    @Schema(description = "last tracking operation")
+    private OperationDto operationDto;
 }
