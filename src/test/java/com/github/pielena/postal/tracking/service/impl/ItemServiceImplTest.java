@@ -1,7 +1,7 @@
 package com.github.pielena.postal.tracking.service.impl;
 
 import com.github.pielena.postal.tracking.dto.ItemDtoRq;
-import com.github.pielena.postal.tracking.exception.S404ResourceNotFoundException;
+import com.github.pielena.postal.tracking.exception.S404NotFoundException;
 import com.github.pielena.postal.tracking.persistence.entity.Item;
 import com.github.pielena.postal.tracking.enums.ItemType;
 import com.github.pielena.postal.tracking.persistence.entity.Person;
@@ -67,7 +67,7 @@ class ItemServiceImplTest {
 
         when(personService.findByNameAndAddressDescription(anyString(), anyString())).thenReturn(Optional.empty());
 
-        Exception thrown = assertThrows(S404ResourceNotFoundException.class,
+        Exception thrown = assertThrows(S404NotFoundException.class,
                 () -> itemService.create(itemDtoRq));
         assertEquals("Person with name: Anna and address: Spring street, 12 not found", thrown.getMessage());
     }
@@ -79,7 +79,7 @@ class ItemServiceImplTest {
         when(personService.findByNameAndAddressDescription(anyString(), anyString())).thenReturn(Optional.of(new Person()));
         when(personService.findByNameAndIndex(anyString(), anyInt())).thenReturn(Optional.empty());
 
-        Exception thrown = assertThrows(S404ResourceNotFoundException.class,
+        Exception thrown = assertThrows(S404NotFoundException.class,
                 () -> itemService.create(itemDtoRq));
         assertEquals("Person with name: Ivan and index: 123456 not found", thrown.getMessage());
     }

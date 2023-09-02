@@ -8,7 +8,7 @@ import com.github.pielena.postal.tracking.dto.OperationDto;
 import com.github.pielena.postal.tracking.enums.ItemType;
 import com.github.pielena.postal.tracking.enums.PostOfficeType;
 import com.github.pielena.postal.tracking.enums.State;
-import com.github.pielena.postal.tracking.exception.S404ResourceNotFoundException;
+import com.github.pielena.postal.tracking.exception.S404NotFoundException;
 import com.github.pielena.postal.tracking.persistence.entity.Item;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -26,6 +26,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import static com.github.pielena.postal.tracking.exception.ExceptionMessageConstants.NOT_FOUND_BY_ID_MESSAGE;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -84,7 +85,8 @@ public class ItemControllerMockMvcUnitTest {
         final UUID id = UUID.fromString("5af49324-d3a3-4550-9448-38f00103565c");
 
         when(itemDecorator.getById(id))
-                .thenThrow(new S404ResourceNotFoundException(Item.class, id));
+                .thenThrow(new S404NotFoundException(String.format(NOT_FOUND_BY_ID_MESSAGE,
+                        Item.class.getSimpleName(), id)));
 
         mockMvc.perform(
                         get("/api/v1/items/{id}", String.valueOf(id)))

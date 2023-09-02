@@ -5,7 +5,7 @@ import com.github.pielena.postal.tracking.decorator.OperationDecorator;
 import com.github.pielena.postal.tracking.dto.OperationDto;
 import com.github.pielena.postal.tracking.enums.PostOfficeType;
 import com.github.pielena.postal.tracking.exception.GlobalExceptionHandler;
-import com.github.pielena.postal.tracking.exception.S404ResourceNotFoundException;
+import com.github.pielena.postal.tracking.exception.S404NotFoundException;
 import com.github.pielena.postal.tracking.persistence.entity.Item;
 import com.github.pielena.postal.tracking.enums.State;
 import org.hamcrest.Matchers;
@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.List;
 import java.util.UUID;
 
+import static com.github.pielena.postal.tracking.exception.ExceptionMessageConstants.NOT_FOUND_BY_ID_MESSAGE;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -67,7 +68,8 @@ public class OperationControllerMockMvcUnitTest {
         final UUID id = UUID.fromString("7af49324-d3a3-4550-9448-38f00103565c");
 
         when(operationDecorator.getByItemId(any()))
-                .thenThrow(new S404ResourceNotFoundException(Item.class, id));
+                .thenThrow(new S404NotFoundException(String.format(NOT_FOUND_BY_ID_MESSAGE,
+                        Item.class.getSimpleName(), id)));
 
         mockMvc.perform(
                         get("/api/v1/items/{itemId}/operations", String.valueOf(id)))
@@ -98,7 +100,8 @@ public class OperationControllerMockMvcUnitTest {
         final OperationDto operationDto = createTestOperationDto();
 
         when(operationDecorator.createOne(any(), any()))
-                .thenThrow(new S404ResourceNotFoundException(Item.class, UUID.fromString("7af49324-d3a3-4550-9448-38f00103565c")));
+                .thenThrow(new S404NotFoundException(String.format(NOT_FOUND_BY_ID_MESSAGE,
+                        Item.class.getSimpleName(), UUID.fromString("7af49324-d3a3-4550-9448-38f00103565c"))));
 
         mockMvc.perform(MockMvcRequestBuilders
                         .post("/api/v1/items/{itemId}/operations", "7af49324-d3a3-4550-9448-38f00103565c")

@@ -4,7 +4,7 @@ import com.github.pielena.postal.tracking.dto.OperationDto;
 import com.github.pielena.postal.tracking.persistence.entity.Item;
 import com.github.pielena.postal.tracking.persistence.entity.Operation;
 import com.github.pielena.postal.tracking.persistence.entity.PostOffice;
-import com.github.pielena.postal.tracking.exception.S404ResourceNotFoundException;
+import com.github.pielena.postal.tracking.exception.S404NotFoundException;
 import com.github.pielena.postal.tracking.persistence.repository.OperationRepository;
 import com.github.pielena.postal.tracking.service.ItemService;
 import com.github.pielena.postal.tracking.service.OperationService;
@@ -17,6 +17,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import static com.github.pielena.postal.tracking.exception.ExceptionMessageConstants.NOT_FOUND_BY_ID_MESSAGE;
+import static com.github.pielena.postal.tracking.exception.ExceptionMessageConstants.NOT_FOUND_BY_INDEX_MESSAGE;
+
 @Service
 @RequiredArgsConstructor
 public class OperationServiceImpl implements OperationService {
@@ -28,7 +31,8 @@ public class OperationServiceImpl implements OperationService {
     @Override
     public List<Operation> getByItemId(UUID itemId) {
         Item item = itemService.getById(itemId)
-                .orElseThrow(() -> new S404ResourceNotFoundException(Item.class, itemId));
+                .orElseThrow(() -> new S404NotFoundException(String.format(NOT_FOUND_BY_ID_MESSAGE,
+                        Item.class.getSimpleName(), itemId)));
 
         return operationRepository.getAllByItem(item);
     }
@@ -38,9 +42,12 @@ public class OperationServiceImpl implements OperationService {
     public Operation createOne(UUID itemId, OperationDto operationDto) {
 
         Item item = itemService.getById(itemId)
-                .orElseThrow(() -> new S404ResourceNotFoundException(Item.class, itemId));
+                .orElseThrow(() -> new S404NotFoundException(String.format(NOT_FOUND_BY_ID_MESSAGE,
+                        Item.class.getSimpleName(), itemId)));
+
         PostOffice postOffice = postOfficeService.findByIndex(operationDto.getPostOfficeIndex())
-                .orElseThrow(() -> new S404ResourceNotFoundException(PostOffice.class, operationDto.getPostOfficeIndex()));
+                .orElseThrow(() -> new S404NotFoundException(String.format(NOT_FOUND_BY_INDEX_MESSAGE,
+                        PostOffice.class.getSimpleName(), operationDto.getPostOfficeIndex())));
 
         Operation operation = Operation.builder()
                 .item(item)

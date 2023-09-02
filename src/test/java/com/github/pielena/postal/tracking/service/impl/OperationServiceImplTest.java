@@ -1,7 +1,7 @@
 package com.github.pielena.postal.tracking.service.impl;
 
 import com.github.pielena.postal.tracking.dto.OperationDto;
-import com.github.pielena.postal.tracking.exception.S404ResourceNotFoundException;
+import com.github.pielena.postal.tracking.exception.S404NotFoundException;
 import com.github.pielena.postal.tracking.persistence.entity.Item;
 import com.github.pielena.postal.tracking.persistence.entity.Operation;
 import com.github.pielena.postal.tracking.persistence.entity.PostOffice;
@@ -66,7 +66,7 @@ class OperationServiceImplTest {
 
         when(itemService.getById(itemId)).thenReturn(Optional.empty());
 
-        Exception thrown = assertThrows(S404ResourceNotFoundException.class,
+        Exception thrown = assertThrows(S404NotFoundException.class,
                 () -> operationService.createOne(itemId, new OperationDto()));
         assertEquals("Item with Id: 7af49324-d3a3-4550-9448-38f00103565c not found", thrown.getMessage());
     }
@@ -81,9 +81,10 @@ class OperationServiceImplTest {
         when(itemService.getById(itemId)).thenReturn(Optional.of(new Item()));
         when(postOfficeService.findByIndex(operationDto.getPostOfficeIndex())).thenReturn(Optional.empty());
 
-        Exception thrown = assertThrows(S404ResourceNotFoundException.class,
+        Exception thrown = assertThrows(S404NotFoundException.class,
                 () -> operationService.createOne(itemId, operationDto));
-        assertEquals("PostOffice with Id: 123456 not found", thrown.getMessage());
+
+        assertEquals("PostOffice with index: 123456 not found", thrown.getMessage());
     }
 
     @Test
