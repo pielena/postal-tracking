@@ -2,7 +2,7 @@ package com.github.pielena.postal.tracking.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pielena.postal.tracking.dto.ItemDtoRq;
-import com.github.pielena.postal.tracking.persistence.entity.ItemType;
+import com.github.pielena.postal.tracking.enums.ItemType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

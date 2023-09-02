@@ -1,7 +1,8 @@
 package com.github.pielena.postal.tracking.dto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.pielena.postal.tracking.persistence.entity.State;
+import com.github.pielena.postal.tracking.enums.PostOfficeType;
+import com.github.pielena.postal.tracking.enums.State;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;

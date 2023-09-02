@@ -2,6 +2,8 @@ package com.github.pielena.postal.tracking.controller;
 
 import com.github.pielena.postal.tracking.decorator.OperationDecorator;
 import com.github.pielena.postal.tracking.dto.OperationDto;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,19 +18,22 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("${application.endpoint.operation}")
+@RequiredArgsConstructor
+@Tag(name = "Operation Controller", description = "Manage operations")
 public class OperationController {
 
     private final OperationDecorator operationDecorator;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Create new operation by postal item id")
     public OperationDto create(@PathVariable UUID itemId, @RequestBody OperationDto operationDto) {
         return operationDecorator.createOne(itemId, operationDto);
     }
 
     @GetMapping
+    @Operation(summary = "Get list of operationDto (tracking history) by postal item id")
     public List<OperationDto> getByItemId(@PathVariable UUID itemId) {
         return operationDecorator.getByItemId(itemId);
     }

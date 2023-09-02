@@ -5,7 +5,7 @@ import com.github.pielena.postal.tracking.persistence.entity.Item;
 import com.github.pielena.postal.tracking.persistence.entity.Operation;
 import com.github.pielena.postal.tracking.persistence.entity.Person;
 import com.github.pielena.postal.tracking.persistence.entity.PostOffice;
-import com.github.pielena.postal.tracking.persistence.entity.State;
+import com.github.pielena.postal.tracking.enums.State;
 import com.github.pielena.postal.tracking.exception.S404ResourceNotFoundException;
 import com.github.pielena.postal.tracking.persistence.repository.ItemRepository;
 import com.github.pielena.postal.tracking.service.ItemService;

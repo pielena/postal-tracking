@@ -1,4 +1,4 @@
-package com.github.pielena.postal.tracking.dto;
+package com.github.pielena.postal.tracking.enums;
 
 public enum PostOfficeType {
     TRANSIT,

@@ -1,7 +1,7 @@
 package com.github.pielena.postal.tracking.converter;
 
 import com.github.pielena.postal.tracking.dto.OperationDto;
-import com.github.pielena.postal.tracking.dto.PostOfficeType;
+import com.github.pielena.postal.tracking.enums.PostOfficeType;
 import com.github.pielena.postal.tracking.persistence.entity.Operation;
 import org.springframework.stereotype.Component;
 

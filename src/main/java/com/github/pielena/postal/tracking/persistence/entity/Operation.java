@@ -1,5 +1,6 @@
 package com.github.pielena.postal.tracking.persistence.entity;
 
+import com.github.pielena.postal.tracking.enums.State;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

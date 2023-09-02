@@ -5,7 +5,7 @@ import com.github.pielena.postal.tracking.exception.S404ResourceNotFoundExceptio
 import com.github.pielena.postal.tracking.persistence.entity.Item;
 import com.github.pielena.postal.tracking.persistence.entity.Operation;
 import com.github.pielena.postal.tracking.persistence.entity.PostOffice;
-import com.github.pielena.postal.tracking.persistence.entity.State;
+import com.github.pielena.postal.tracking.enums.State;
 import com.github.pielena.postal.tracking.persistence.repository.OperationRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
