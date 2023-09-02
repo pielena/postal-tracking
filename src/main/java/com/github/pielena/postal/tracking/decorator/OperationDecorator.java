@@ -2,10 +2,12 @@ package com.github.pielena.postal.tracking.decorator;
 
 import com.github.pielena.postal.tracking.converter.OperationConverter;
 import com.github.pielena.postal.tracking.dto.OperationDto;
+import com.github.pielena.postal.tracking.persistence.entity.Operation;
 import com.github.pielena.postal.tracking.service.OperationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,6 +24,7 @@ public class OperationDecorator {
 
     public List<OperationDto> getByItemId(UUID itemId) {
         return operationService.getByItemId(itemId).stream()
+                .sorted(Comparator.comparing(Operation::getDate).reversed())
                 .map(operationConverter::entityToDto)
                 .toList();
     }

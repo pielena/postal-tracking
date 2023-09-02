@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Component
@@ -31,9 +32,20 @@ public class ItemConverter {
                 .map(operationConverter::entityToDto)
                 .orElseThrow(NoSuchElementException::new);
 
-        itemDtoRs.setOperationDto(operationDto);
+        itemDtoRs.setLastOperation(operationDto);
 
         return itemDtoRs;
     }
 
+    public ItemDtoRs entityToDtoWithOperationHistory(Item item) {
+        ItemDtoRs itemDtoRs = entityToDto(item);
+
+        List<OperationDto> operationHistory = item.getOperationHistory().stream()
+                .sorted(Comparator.comparing(Operation::getDate).reversed())
+                .map(operationConverter::entityToDto)
+                .toList();
+        itemDtoRs.setOperationHistory(operationHistory);
+
+        return itemDtoRs;
+    }
 }

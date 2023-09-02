@@ -64,16 +64,17 @@ public class OperationControllerMockMvcUnitTest {
 
     @Test
     public void givenItemId_whenGetByNotExistingItem_thenStatus404andErrorMessageReturned() throws Exception {
+        final UUID id = UUID.fromString("7af49324-d3a3-4550-9448-38f00103565c");
 
         when(operationDecorator.getByItemId(any()))
-                .thenThrow(new S404ResourceNotFoundException(Item.class, UUID.fromString("7af49324-d3a3-4550-9448-38f00103565c")));
+                .thenThrow(new S404ResourceNotFoundException(Item.class, id));
 
         mockMvc.perform(
-                        get("/api/v1/items/{itemId}/operations", "7af49324-d3a3-4550-9448-38f00103565c"))
+                        get("/api/v1/items/{itemId}/operations", String.valueOf(id)))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.message", Matchers.is("Item with Id: 7af49324-d3a3-4550-9448-38f00103565c not found")));
 
-        verify(operationDecorator, times(1)).getByItemId(any());
+        verify(operationDecorator, times(1)).getByItemId(id);
     }
 
     @Test

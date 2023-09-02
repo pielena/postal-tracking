@@ -41,7 +41,7 @@ class OperationServiceImplTest {
     private PostOfficeServiceImpl postOfficeService;
 
     @Test
-    void givenItemId_whenGetByItemId_thenListOfOperationsReturned() {
+    public void givenItemId_whenGetByItemId_thenListOfOperationsReturned() {
         final UUID itemId = UUID.randomUUID();
         final Item item = Item.builder()
                 .id(itemId)
@@ -61,7 +61,7 @@ class OperationServiceImplTest {
     }
 
     @Test
-    void givenItemId_whenItemDoesNotExist_thenThrowException() {
+    public void givenItemId_whenItemDoesNotExist_thenThrowException() {
         final UUID itemId = UUID.fromString("7af49324-d3a3-4550-9448-38f00103565c");
 
         when(itemService.getById(itemId)).thenReturn(Optional.empty());
@@ -72,7 +72,7 @@ class OperationServiceImplTest {
     }
 
     @Test
-    void givenOperationDto_whenPostOfficeDoesNotExist_thenThrowException() {
+    public void givenOperationDto_whenPostOfficeDoesNotExist_thenThrowException() {
         final UUID itemId = UUID.randomUUID();
         final OperationDto operationDto = OperationDto.builder()
                 .postOfficeIndex(123456)
@@ -87,7 +87,7 @@ class OperationServiceImplTest {
     }
 
     @Test
-    void givenItemIdAndOperationDto_whenCreate_thenOperationReturned() {
+    public void givenItemIdAndOperationDto_whenCreate_thenOperationReturned() {
         final UUID itemId = UUID.randomUUID();
         final PostOffice postOffice = PostOffice.builder()
                 .index(123456)

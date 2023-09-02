@@ -13,7 +13,7 @@ class PostalTrackingApplicationTests {
 	ItemController itemController;
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 		Assertions.assertThat(itemController).isNotNull();
 	}
 

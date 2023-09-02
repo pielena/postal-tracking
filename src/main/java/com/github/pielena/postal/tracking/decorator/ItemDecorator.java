@@ -3,10 +3,14 @@ package com.github.pielena.postal.tracking.decorator;
 import com.github.pielena.postal.tracking.converter.ItemConverter;
 import com.github.pielena.postal.tracking.dto.ItemDtoRq;
 import com.github.pielena.postal.tracking.dto.ItemDtoRs;
+import com.github.pielena.postal.tracking.exception.S404ResourceNotFoundException;
+import com.github.pielena.postal.tracking.persistence.entity.Item;
 import com.github.pielena.postal.tracking.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -17,6 +21,12 @@ public class ItemDecorator {
 
     public Page<ItemDtoRs> getAll(int page, int pageSize) {
         return itemService.getAll(page, pageSize).map(itemConverter::entityToDto);
+    }
+
+    public ItemDtoRs getById(UUID id) {
+        return itemService.getById(id)
+                .map(itemConverter::entityToDtoWithOperationHistory)
+                .orElseThrow(() -> new S404ResourceNotFoundException(Item.class, id));
     }
 
     public ItemDtoRs createOne(ItemDtoRq itemDtoRq) {

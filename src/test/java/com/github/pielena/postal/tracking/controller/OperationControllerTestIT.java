@@ -30,7 +30,7 @@ class OperationControllerTestIT extends AbstractIntegrationTest {
 
     @Test
     @Sql("/insert.sql")
-    void givenItemIdAndOperationDto_whenCreate_thenStatus201andOperationDtoReturned() throws Exception {
+    public void givenItemIdAndOperationDto_whenCreate_thenStatus201andOperationDtoReturned() throws Exception {
         final OperationDto operationDto = createTestOperationDto();
 
         mockMvc.perform(post("/api/v1/items/7af49324-d3a3-4550-9448-38f00103565b/operations")
@@ -62,7 +62,7 @@ class OperationControllerTestIT extends AbstractIntegrationTest {
 
     @Test
     @Sql("/insert.sql")
-    void givenItemId_whenGetByItemId_thenStatus200andListOfOperationDtoReturned() throws Exception {
+    public void givenItemId_whenGetByItemId_thenStatus200andListOfOperationDtoReturned() throws Exception {
 
         mockMvc.perform(get("/api/v1/items/7af49324-d3a3-4550-9448-38f00103565b/operations")
                         .accept(MediaType.APPLICATION_JSON))
@@ -76,7 +76,7 @@ class OperationControllerTestIT extends AbstractIntegrationTest {
 
     @Test
     @Sql("/insert.sql")
-    void givenItemId_whenGetByNotExistingItem_thenStatus404andErrorMessageReturned() throws Exception {
+    public void givenItemId_whenGetByNotExistingItem_thenStatus404andErrorMessageReturned() throws Exception {
 
         mockMvc.perform(get("/api/v1/items/8af49324-d3a3-4550-9448-38f00103565b/operations")
                         .accept(MediaType.APPLICATION_JSON))

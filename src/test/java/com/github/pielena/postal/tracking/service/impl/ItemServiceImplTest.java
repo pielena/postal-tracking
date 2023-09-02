@@ -48,7 +48,7 @@ class ItemServiceImplTest {
     private PersonService personService;
 
     @Test
-    void whenGetAll_thenItemPageReturned() {
+    public void whenGetAll_thenItemPageReturned() {
         final Item item = createTestItem();
         final Page<Item> page = new PageImpl<>(List.of(item, item, item));
 
@@ -62,7 +62,7 @@ class ItemServiceImplTest {
     }
 
     @Test
-    void givenItemDtoRq_whenRecipientPersonDoesNotExist_thenThrowException() {
+    public void givenItemDtoRq_whenRecipientPersonDoesNotExist_thenThrowException() {
         final ItemDtoRq itemDtoRq = createTestItemDtoRq();
 
         when(personService.findByNameAndAddressDescription(anyString(), anyString())).thenReturn(Optional.empty());
@@ -73,7 +73,7 @@ class ItemServiceImplTest {
     }
 
     @Test
-    void givenItemDtoRq_whenSenderPersonDoesNotExist_thenThrowException() {
+    public void givenItemDtoRq_whenSenderPersonDoesNotExist_thenThrowException() {
         final ItemDtoRq itemDtoRq = createTestItemDtoRq();
 
         when(personService.findByNameAndAddressDescription(anyString(), anyString())).thenReturn(Optional.of(new Person()));
@@ -85,7 +85,7 @@ class ItemServiceImplTest {
     }
 
     @Test
-    void givenItemId_whenFindById_thenOptionalItemReturned() {
+    public void givenItemId_whenFindById_thenOptionalItemReturned() {
         final UUID id = UUID.randomUUID();
         final Item item = createTestItem();
 
@@ -98,7 +98,7 @@ class ItemServiceImplTest {
     }
 
     @Test
-    void givenItemDtoRq_whenCreate_thenItemReturned() {
+    public void givenItemDtoRq_whenCreate_thenItemReturned() {
         final ItemDtoRq itemDtoRq = createTestItemDtoRq();
         final Item item = createTestItem();
 
