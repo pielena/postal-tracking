@@ -5,6 +5,7 @@ import com.github.pielena.postal.tracking.dto.ItemDtoRq;
 import com.github.pielena.postal.tracking.dto.ItemDtoRs;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -42,7 +43,7 @@ public class ItemController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create new postal item")
-    public ItemDtoRs create(@RequestBody ItemDtoRq itemDtoRq) {
+    public ItemDtoRs create(@Valid @RequestBody ItemDtoRq itemDtoRq) {
         return itemDecorator.createOne(itemDtoRq);
     }
 }

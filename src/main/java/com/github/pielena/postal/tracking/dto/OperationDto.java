@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -24,9 +25,11 @@ public class OperationDto {
     private UUID id;
 
     @Schema(description = "current post office index", example = "123456")
+    @Range(min = 0, max = 999999, message = "index must be greater than zero and can't be over 6 digits")
     private int postOfficeIndex;
 
-    @Schema(description = "current post office type", example = "TRANSIT")
+    @Schema(description = "current post office type", example = "TRANSIT",
+            accessMode = Schema.AccessMode.READ_ONLY)
     private PostOfficeType postOfficeType;
 
     @Schema(description = "postal item state", example = "ARRIVED")

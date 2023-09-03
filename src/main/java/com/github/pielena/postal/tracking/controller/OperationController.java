@@ -4,6 +4,7 @@ import com.github.pielena.postal.tracking.decorator.OperationDecorator;
 import com.github.pielena.postal.tracking.dto.OperationDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,7 @@ public class OperationController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create new operation by postal item id")
-    public OperationDto create(@PathVariable UUID itemId, @RequestBody OperationDto operationDto) {
+    public OperationDto create(@PathVariable UUID itemId, @Valid @RequestBody OperationDto operationDto) {
         return operationDecorator.createOne(itemId, operationDto);
     }
 
