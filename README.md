@@ -36,7 +36,7 @@ the packaging type and spring-boot-starter-tomcat dependency
 - deploy .war to your server
 
 #### Getting started with .jar :
--The best way to run the project is with IDE like IntelliJ IDEA.
+- The best way to run the project is with IDE like IntelliJ IDEA.
 
 ### Usage:
 
@@ -46,6 +46,8 @@ for your DB
 You can use it for testing.
 - You can also see all available endpoints by visiting 
 http://localhost:8080/app/swagger-ui/index.htm (change prefix if necessary)
+- You can also find the file "test-report-2023-09-03.png" in the /resource 
+folder to see the test coverage report
 
 ### Contacts:
 
