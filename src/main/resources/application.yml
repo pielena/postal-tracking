@@ -10,9 +10,3 @@ spring:
     password: root
   jpa:
     show-sql: true
-
-application:
-  endpoint:
-    root: /api/v1
-    item: ${application.endpoint.root}/items
-    operation: ${application.endpoint.root}/items/{itemId}/operations

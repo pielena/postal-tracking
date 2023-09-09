@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("${application.endpoint.operation}")
+@RequestMapping("/api/v1/items/{itemId}/operations")
 @RequiredArgsConstructor
 @Tag(name = "Operation Controller", description = "Manage operations")
 public class OperationController {

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("${application.endpoint.item}")
+@RequestMapping("/api/v1/items")
 @RequiredArgsConstructor
 @Tag(name = "Postal item Controller", description = "Manage Postal items")
 public class ItemController {

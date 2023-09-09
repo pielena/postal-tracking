@@ -9,5 +9,4 @@ public class PostalTrackingApplication {
     public static void main(String[] args) {
         SpringApplication.run(PostalTrackingApplication.class, args);
     }
-
 }
