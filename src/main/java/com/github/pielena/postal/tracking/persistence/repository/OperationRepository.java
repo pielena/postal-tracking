@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -21,24 +22,24 @@ public interface OperationRepository extends JpaRepository<Operation, UUID>, Jpa
             return (root, query, builder) -> {
                 List<Predicate> predicates = new ArrayList<>();
 
-                if (request.getItemId() != null) {
-                    predicates.add(builder.equal(root.get("item").get("id"), UUID.fromString(request.getItemId())));
-                }
-                if (request.getIndex() != null) {
-                    predicates.add(builder.equal(root.get("postOffice").get("index"), request.getIndex()));
-                }
-                if (request.getState() != null) {
-                    predicates.add(builder.equal(root.get("state"), State.valueOf(request.getState().toUpperCase())));
-                }
-                if (request.getIsDestination() != null) {
-                    predicates.add(builder.equal(root.get("isDestination"), request.getIsDestination()));
-                }
-                if (request.getDateFrom() != null) {
-                    predicates.add(builder.greaterThanOrEqualTo(root.get("date"), request.getDateFrom()));
-                }
-                if (request.getDateTo() != null) {
-                    predicates.add(builder.lessThanOrEqualTo(root.get("date"), request.getDateTo()));
-                }
+                Optional.ofNullable(request.getItemId())
+                        .ifPresent(itemId -> predicates.add(builder.equal(root.get("item").get("id"), UUID.fromString(itemId))));
+
+                Optional.ofNullable(request.getIndex())
+                        .ifPresent(index -> predicates.add(builder.equal(root.get("postOffice").get("index"), index)));
+
+                Optional.ofNullable(request.getState())
+                        .ifPresent(state -> predicates.add(builder.equal(root.get("state"), State.valueOf(state.toUpperCase()))));
+
+                Optional.ofNullable(request.getIsDestination())
+                        .ifPresent(isDest -> predicates.add(builder.equal(root.get("isDestination"), isDest)));
+
+                Optional.ofNullable(request.getDateFrom())
+                        .ifPresent(dateFrom -> predicates.add(builder.greaterThanOrEqualTo(root.get("date"), dateFrom)));
+
+                Optional.ofNullable(request.getDateTo())
+                        .ifPresent(dateTo -> predicates.add(builder.lessThanOrEqualTo(root.get("date"), dateTo)));
+
                 return builder.and(predicates.toArray(Predicate[]::new));
             };
         }

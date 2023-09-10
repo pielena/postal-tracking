@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ba758434-a0e6-421e-9693-4396e18c0b4d",
+		"_postman_id": "42301552-c760-4a28-8799-159dc7557631",
 		"name": "Postal Tracking API",
 		"description": "This API exposes endpoints to manage postal tracking.\n\nContact Support:\n Name: Elena Pilyugina\n Email: elena.pilyugina.job@gmail.com",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -23,7 +23,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/api/v1/operations?itemId=7af49324-d3a3-4550-9448-38f00103565b&index=753614&state=arrived&isDestination=false&dateFrom=0030-02-13&dateTo=0036-02-13",
+									"raw": "{{baseUrl}}/api/v1/operations?itemId=7af49324-d3a3-4550-9448-38f00103565b&index=753614&state=arrived&isDestination=false&dateFrom=24-08-2023&dateTo=30-08-2023",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -55,12 +55,12 @@
 										},
 										{
 											"key": "dateFrom",
-											"value": "0030-02-13",
+											"value": "24-08-2023",
 											"description": "(Required) "
 										},
 										{
 											"key": "dateTo",
-											"value": "0036-02-13",
+											"value": "30-08-2023",
 											"description": "(Required) "
 										}
 									]
@@ -78,7 +78,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/v1/operations?itemId=7af49324-d3a3-4550-9448-38f00103565b&index=753614&state=arrived&isDestination=false&dateFrom=0030-02-13&dateTo=0036-02-13",
+											"raw": "{{baseUrl}}/api/v1/operations?itemId=7af49324-d3a3-4550-9448-38f00103565b&index=753614&state=arrived&isDestination=false&dateFrom=24-08-2023&dateTo=30-08-2023",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -106,11 +106,11 @@
 												},
 												{
 													"key": "dateFrom",
-													"value": "0030-02-13"
+													"value": "24-08-2023"
 												},
 												{
 													"key": "dateTo",
-													"value": "0036-02-13"
+													"value": "30-08-2023"
 												}
 											]
 										}
@@ -125,7 +125,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"totalPages\": 43845958,\n  \"totalElements\": 3464302,\n  \"size\": 2193197,\n  \"content\": [\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"postOfficeIndex\": 123456,\n      \"postOfficeType\": \"TRANSIT\",\n      \"state\": \"ARRIVED\",\n      \"date\": \"20-09-2023 19:00\"\n    },\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"postOfficeIndex\": 123456,\n      \"postOfficeType\": \"TRANSIT\",\n      \"state\": \"ARRIVED\",\n      \"date\": \"20-09-2023 19:00\"\n    }\n  ],\n  \"number\": -45871218,\n  \"sort\": {\n    \"empty\": true,\n    \"sorted\": false,\n    \"unsorted\": false\n  },\n  \"first\": true,\n  \"last\": false,\n  \"numberOfElements\": 36379640,\n  \"pageable\": {\n    \"offset\": 75877782,\n    \"sort\": {\n      \"empty\": false,\n      \"sorted\": false,\n      \"unsorted\": true\n    },\n    \"pageNumber\": -45803759,\n    \"pageSize\": -7565374,\n    \"unpaged\": true,\n    \"paged\": true\n  },\n  \"empty\": true\n}"
+									"body": "{\n  \"totalPages\": 31979648,\n  \"totalElements\": -7633399,\n  \"size\": -7410214,\n  \"content\": [\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"postOfficeIndex\": 123456,\n      \"postOfficeType\": \"TRANSIT\",\n      \"state\": \"ARRIVED\",\n      \"date\": \"20-09-2023 19:00\"\n    },\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"postOfficeIndex\": 123456,\n      \"postOfficeType\": \"TRANSIT\",\n      \"state\": \"ARRIVED\",\n      \"date\": \"20-09-2023 19:00\"\n    }\n  ],\n  \"number\": 73228427,\n  \"sort\": {\n    \"empty\": true,\n    \"sorted\": true,\n    \"unsorted\": true\n  },\n  \"pageable\": {\n    \"offset\": -50038214,\n    \"sort\": {\n      \"empty\": true,\n      \"sorted\": true,\n      \"unsorted\": false\n    },\n    \"pageSize\": 53108581,\n    \"pageNumber\": 54771116,\n    \"paged\": false,\n    \"unpaged\": true\n  },\n  \"first\": true,\n  \"last\": true,\n  \"numberOfElements\": -20224487,\n  \"empty\": true\n}"
 								}
 							]
 						},
@@ -290,7 +290,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"totalPages\": -8165612,\n  \"totalElements\": -33106794,\n  \"size\": -64589270,\n  \"content\": [\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"type\": \"LETTER\",\n      \"senderName\": \"Ivan Ivanov\",\n      \"recipientIndex\": 234567,\n      \"recipientAddress\": \"Red Square, 1\",\n      \"recipientName\": \"Anna Volkova\",\n      \"lastOperation\": {\n        \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n        \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n        \"postOfficeIndex\": 123456,\n        \"postOfficeType\": \"TRANSIT\",\n        \"state\": \"ARRIVED\",\n        \"date\": \"20-09-2023 19:00\"\n      },\n      \"operationHistory\": [\n        {\n          \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"postOfficeIndex\": 123456,\n          \"postOfficeType\": \"TRANSIT\",\n          \"state\": \"ARRIVED\",\n          \"date\": \"20-09-2023 19:00\"\n        },\n        {\n          \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"postOfficeIndex\": 123456,\n          \"postOfficeType\": \"TRANSIT\",\n          \"state\": \"ARRIVED\",\n          \"date\": \"20-09-2023 19:00\"\n        }\n      ]\n    },\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"type\": \"LETTER\",\n      \"senderName\": \"Ivan Ivanov\",\n      \"recipientIndex\": 234567,\n      \"recipientAddress\": \"Red Square, 1\",\n      \"recipientName\": \"Anna Volkova\",\n      \"lastOperation\": {\n        \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n        \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n        \"postOfficeIndex\": 123456,\n        \"postOfficeType\": \"TRANSIT\",\n        \"state\": \"ARRIVED\",\n        \"date\": \"20-09-2023 19:00\"\n      },\n      \"operationHistory\": [\n        {\n          \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"postOfficeIndex\": 123456,\n          \"postOfficeType\": \"TRANSIT\",\n          \"state\": \"ARRIVED\",\n          \"date\": \"20-09-2023 19:00\"\n        },\n        {\n          \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"postOfficeIndex\": 123456,\n          \"postOfficeType\": \"TRANSIT\",\n          \"state\": \"ARRIVED\",\n          \"date\": \"20-09-2023 19:00\"\n        }\n      ]\n    }\n  ],\n  \"number\": 11600174,\n  \"sort\": {\n    \"empty\": true,\n    \"sorted\": true,\n    \"unsorted\": false\n  },\n  \"first\": true,\n  \"last\": true,\n  \"numberOfElements\": 75567187,\n  \"pageable\": {\n    \"offset\": -23490193,\n    \"sort\": {\n      \"empty\": false,\n      \"sorted\": false,\n      \"unsorted\": true\n    },\n    \"pageNumber\": -2944574,\n    \"pageSize\": -30756606,\n    \"unpaged\": false,\n    \"paged\": true\n  },\n  \"empty\": true\n}"
+									"body": "{\n  \"totalPages\": -15541864,\n  \"totalElements\": -4127964,\n  \"size\": 35262677,\n  \"content\": [\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"type\": \"LETTER\",\n      \"senderName\": \"Ivan Ivanov\",\n      \"recipientIndex\": 234567,\n      \"recipientAddress\": \"Red Square, 1\",\n      \"recipientName\": \"Anna Volkova\",\n      \"lastOperation\": {\n        \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n        \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n        \"postOfficeIndex\": 123456,\n        \"postOfficeType\": \"TRANSIT\",\n        \"state\": \"ARRIVED\",\n        \"date\": \"20-09-2023 19:00\"\n      },\n      \"operationHistory\": [\n        {\n          \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"postOfficeIndex\": 123456,\n          \"postOfficeType\": \"TRANSIT\",\n          \"state\": \"ARRIVED\",\n          \"date\": \"20-09-2023 19:00\"\n        },\n        {\n          \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"postOfficeIndex\": 123456,\n          \"postOfficeType\": \"TRANSIT\",\n          \"state\": \"ARRIVED\",\n          \"date\": \"20-09-2023 19:00\"\n        }\n      ]\n    },\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"type\": \"LETTER\",\n      \"senderName\": \"Ivan Ivanov\",\n      \"recipientIndex\": 234567,\n      \"recipientAddress\": \"Red Square, 1\",\n      \"recipientName\": \"Anna Volkova\",\n      \"lastOperation\": {\n        \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n        \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n        \"postOfficeIndex\": 123456,\n        \"postOfficeType\": \"TRANSIT\",\n        \"state\": \"ARRIVED\",\n        \"date\": \"20-09-2023 19:00\"\n      },\n      \"operationHistory\": [\n        {\n          \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"postOfficeIndex\": 123456,\n          \"postOfficeType\": \"TRANSIT\",\n          \"state\": \"ARRIVED\",\n          \"date\": \"20-09-2023 19:00\"\n        },\n        {\n          \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"postOfficeIndex\": 123456,\n          \"postOfficeType\": \"TRANSIT\",\n          \"state\": \"ARRIVED\",\n          \"date\": \"20-09-2023 19:00\"\n        }\n      ]\n    }\n  ],\n  \"number\": 41779430,\n  \"sort\": {\n    \"empty\": false,\n    \"sorted\": false,\n    \"unsorted\": true\n  },\n  \"pageable\": {\n    \"offset\": 23518840,\n    \"sort\": {\n      \"empty\": false,\n      \"sorted\": true,\n      \"unsorted\": true\n    },\n    \"pageSize\": 97070860,\n    \"pageNumber\": 23783600,\n    \"paged\": false,\n    \"unpaged\": false\n  },\n  \"first\": true,\n  \"last\": true,\n  \"numberOfElements\": -24252557,\n  \"empty\": false\n}"
 								}
 							]
 						},
@@ -399,7 +399,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "ae3ba572-01d9-93ea-d955-fd8ffdf1773a",
+											"value": "c767107b-13b7-fcc7-c8ed-7b7888563491",
 											"description": "(Required) "
 										}
 									]
@@ -430,7 +430,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "ae3ba572-01d9-93ea-d955-fd8ffdf1773a",
+													"value": "c767107b-13b7-fcc7-c8ed-7b7888563491",
 													"description": "(Required) "
 												}
 											]
