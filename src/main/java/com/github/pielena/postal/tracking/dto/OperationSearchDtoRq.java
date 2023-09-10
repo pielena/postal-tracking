@@ -32,11 +32,11 @@ public class OperationSearchDtoRq {
     @Schema(description = "whether the post office is a destination or not", example = "false")
     private Boolean isDestination;
 
-    @Schema(description = "lower boundary of the time period (including this date)", example = "24-08-2023")
+    @Schema(type = "string", description = "lower boundary of the time period (including this date)", example = "24-08-2023")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate dateFrom;
 
-    @Schema(description = "upper limit of the time period (including this date)", example = "30-08-2023")
+    @Schema(type = "string", description = "upper limit of the time period (including this date)", example = "30-08-2023")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate dateTo;
 

@@ -33,7 +33,7 @@ public class OperationController {
 
     @GetMapping
     @Operation(summary = "Operation searching by different parameters (all of them are optional)")
-    public Page<OperationDto> getAllByRequest(OperationSearchDtoRq request) {
+    public Page<OperationDto> getAllByRequest(@Valid OperationSearchDtoRq request) {
         return operationDecorator.getAllByRequest(request);
     }
 }
