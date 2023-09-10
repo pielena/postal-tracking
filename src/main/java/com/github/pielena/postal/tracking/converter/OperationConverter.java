@@ -12,6 +12,7 @@ public class OperationConverter {
 
         return OperationDto.builder()
                 .id(operation.getId())
+                .itemId(operation.getItem().getId())
                 .postOfficeIndex(operation.getPostOffice().getIndex())
                 .postOfficeType(operation.isDestination() ? PostOfficeType.DESTINATION : PostOfficeType.TRANSIT)
                 .state(operation.getState())

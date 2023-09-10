@@ -13,7 +13,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -41,33 +40,16 @@ class OperationServiceImplTest {
     private PostOfficeServiceImpl postOfficeService;
 
     @Test
-    public void givenItemId_whenGetByItemId_thenListOfOperationsReturned() {
-        final UUID itemId = UUID.randomUUID();
-        final Item item = Item.builder()
-                .id(itemId)
-                .build();
-        final Operation operation = Operation.builder()
-                .item(item)
-                .build();
-        final List<Operation> operations = List.of(operation, operation, operation);
-
-        when(itemService.getById(itemId)).thenReturn(Optional.of(item));
-        when(operationRepository.getAllByItem(item)).thenReturn(operations);
-
-        List<Operation> resultList = operationService.getByItemId(item.getId());
-
-        assertEquals(3, resultList.size());
-        assertEquals(operations, resultList);
-    }
-
-    @Test
     public void givenItemId_whenItemDoesNotExist_thenThrowException() {
         final UUID itemId = UUID.fromString("7af49324-d3a3-4550-9448-38f00103565c");
+        OperationDto operationDto = OperationDto.builder()
+                .itemId(itemId)
+                .build();
 
         when(itemService.getById(itemId)).thenReturn(Optional.empty());
 
         Exception thrown = assertThrows(S404NotFoundException.class,
-                () -> operationService.createOne(itemId, new OperationDto()));
+                () -> operationService.createOne(operationDto));
         assertEquals("Item with Id: 7af49324-d3a3-4550-9448-38f00103565c not found", thrown.getMessage());
     }
 
@@ -75,6 +57,7 @@ class OperationServiceImplTest {
     public void givenOperationDto_whenPostOfficeDoesNotExist_thenThrowException() {
         final UUID itemId = UUID.randomUUID();
         final OperationDto operationDto = OperationDto.builder()
+                .itemId(itemId)
                 .postOfficeIndex(123456)
                 .build();
 
@@ -82,13 +65,13 @@ class OperationServiceImplTest {
         when(postOfficeService.findByIndex(operationDto.getPostOfficeIndex())).thenReturn(Optional.empty());
 
         Exception thrown = assertThrows(S404NotFoundException.class,
-                () -> operationService.createOne(itemId, operationDto));
+                () -> operationService.createOne(operationDto));
 
         assertEquals("PostOffice with index: 123456 not found", thrown.getMessage());
     }
 
     @Test
-    public void givenItemIdAndOperationDto_whenCreate_thenOperationReturned() {
+    public void givenOperationDto_whenCreate_thenOperationReturned() {
         final UUID itemId = UUID.randomUUID();
         final PostOffice postOffice = PostOffice.builder()
                 .index(123456)
@@ -98,6 +81,7 @@ class OperationServiceImplTest {
                 .destinationPostOffice(postOffice)
                 .build();
         final OperationDto operationDto = OperationDto.builder()
+                .itemId(itemId)
                 .postOfficeIndex(123456)
                 .state(State.ARRIVED)
                 .build();
@@ -113,7 +97,7 @@ class OperationServiceImplTest {
         when(postOfficeService.findByIndex(operationDto.getPostOfficeIndex())).thenReturn(Optional.of(postOffice));
         when(operationRepository.save(any())).thenReturn(operation);
 
-        Operation result = operationService.createOne(itemId, operationDto);
+        Operation result = operationService.createOne(operationDto);
 
         assertNotNull(result.getId());
         verify(operationRepository, times(1)).save(any());

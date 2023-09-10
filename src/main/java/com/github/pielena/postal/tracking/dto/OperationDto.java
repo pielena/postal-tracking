@@ -24,6 +24,9 @@ public class OperationDto {
             accessMode = Schema.AccessMode.READ_ONLY)
     private UUID id;
 
+    @Schema(description = "item id", example = "c8cd3aee-62af-4239-a5da-23965734a733")
+    private UUID itemId;
+
     @Schema(description = "current post office index", example = "123456")
     @Range(min = 0, max = 999999, message = "index must be greater than zero and can't be over 6 digits")
     private int postOfficeIndex;

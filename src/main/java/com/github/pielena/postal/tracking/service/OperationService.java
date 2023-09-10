@@ -1,14 +1,13 @@
 package com.github.pielena.postal.tracking.service;
 
 import com.github.pielena.postal.tracking.dto.OperationDto;
+import com.github.pielena.postal.tracking.dto.OperationSearchDtoRq;
 import com.github.pielena.postal.tracking.persistence.entity.Operation;
-
-import java.util.List;
-import java.util.UUID;
+import org.springframework.data.domain.Page;
 
 public interface OperationService {
 
-    List<Operation> getByItemId(UUID id);
+    Page<Operation> getAllByRequest(OperationSearchDtoRq request);
 
-    Operation createOne(UUID itemId, OperationDto operationDto);
+    Operation createOne(OperationDto operationDto);
 }
