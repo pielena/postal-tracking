@@ -40,13 +40,13 @@ the packaging type and spring-boot-starter-tomcat dependency
 
 ### Usage:
 
-- In the /resources/db/sql folder you can find simple init.sql script 
+- In the /develop/sql folder you can find simple init.sql script 
 for your DB
-- In the /resources folder you can find "Postal Tracking API.postman_collection.json". 
+- In the /develop folder you can find "Postal Tracking API.postman_collection.json". 
 You can use it for testing.
 - You can also see all available endpoints by visiting 
 http://localhost:8080/app/swagger-ui/index.htm (change prefix if necessary)
-- You can also find the file "test-report-2023-09-03.png" in the /resource 
+- You can also find the file "test-report-2023-09-03.png" in the /develop 
 folder to see the test coverage report
 
 ### Contacts:

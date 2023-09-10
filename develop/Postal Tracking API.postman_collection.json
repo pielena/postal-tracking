@@ -1,0 +1,465 @@
+{
+	"info": {
+		"_postman_id": "ba758434-a0e6-421e-9693-4396e18c0b4d",
+		"name": "Postal Tracking API",
+		"description": "This API exposes endpoints to manage postal tracking.\n\nContact Support:\n Name: Elena Pilyugina\n Email: elena.pilyugina.job@gmail.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/v1",
+			"item": [
+				{
+					"name": "operations",
+					"item": [
+						{
+							"name": "Operation searching by different parameters (all of them are optional)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/operations?itemId=7af49324-d3a3-4550-9448-38f00103565b&index=753614&state=arrived&isDestination=false&dateFrom=0030-02-13&dateTo=0036-02-13",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"operations"
+									],
+									"query": [
+										{
+											"key": "itemId",
+											"value": "7af49324-d3a3-4550-9448-38f00103565b",
+											"description": "(Required) "
+										},
+										{
+											"key": "index",
+											"value": "753614",
+											"description": "(Required) "
+										},
+										{
+											"key": "state",
+											"value": "arrived",
+											"description": "(Required) "
+										},
+										{
+											"key": "isDestination",
+											"value": "false",
+											"description": "(Required) "
+										},
+										{
+											"key": "dateFrom",
+											"value": "0030-02-13",
+											"description": "(Required) "
+										},
+										{
+											"key": "dateTo",
+											"value": "0036-02-13",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/operations?itemId=7af49324-d3a3-4550-9448-38f00103565b&index=753614&state=arrived&isDestination=false&dateFrom=0030-02-13&dateTo=0036-02-13",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"operations"
+											],
+											"query": [
+												{
+													"key": "itemId",
+													"value": "7af49324-d3a3-4550-9448-38f00103565b"
+												},
+												{
+													"key": "index",
+													"value": "753614"
+												},
+												{
+													"key": "state",
+													"value": "arrived"
+												},
+												{
+													"key": "isDestination",
+													"value": "false"
+												},
+												{
+													"key": "dateFrom",
+													"value": "0030-02-13"
+												},
+												{
+													"key": "dateTo",
+													"value": "0036-02-13"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"totalPages\": 43845958,\n  \"totalElements\": 3464302,\n  \"size\": 2193197,\n  \"content\": [\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"postOfficeIndex\": 123456,\n      \"postOfficeType\": \"TRANSIT\",\n      \"state\": \"ARRIVED\",\n      \"date\": \"20-09-2023 19:00\"\n    },\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"postOfficeIndex\": 123456,\n      \"postOfficeType\": \"TRANSIT\",\n      \"state\": \"ARRIVED\",\n      \"date\": \"20-09-2023 19:00\"\n    }\n  ],\n  \"number\": -45871218,\n  \"sort\": {\n    \"empty\": true,\n    \"sorted\": false,\n    \"unsorted\": false\n  },\n  \"first\": true,\n  \"last\": false,\n  \"numberOfElements\": 36379640,\n  \"pageable\": {\n    \"offset\": 75877782,\n    \"sort\": {\n      \"empty\": false,\n      \"sorted\": false,\n      \"unsorted\": true\n    },\n    \"pageNumber\": -45803759,\n    \"pageSize\": -7565374,\n    \"unpaged\": true,\n    \"paged\": true\n  },\n  \"empty\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "Create new operation",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n  \"postOfficeIndex\": 123456,\n  \"state\": \"ARRIVED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/operations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"operations"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n  \"postOfficeIndex\": 123456,\n  \"state\": \"ARRIVED\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/operations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"operations"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n  \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n  \"postOfficeIndex\": 123456,\n  \"postOfficeType\": \"TRANSIT\",\n  \"state\": \"ARRIVED\",\n  \"date\": \"20-09-2023 19:00\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "items",
+					"item": [
+						{
+							"name": "Get page with postal itemDtos with their latest operations, without their operation history",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/items?page=1&pageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"items"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/items?page=1&pageSize=10",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"items"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "pageSize",
+													"value": "10"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"totalPages\": -8165612,\n  \"totalElements\": -33106794,\n  \"size\": -64589270,\n  \"content\": [\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"type\": \"LETTER\",\n      \"senderName\": \"Ivan Ivanov\",\n      \"recipientIndex\": 234567,\n      \"recipientAddress\": \"Red Square, 1\",\n      \"recipientName\": \"Anna Volkova\",\n      \"lastOperation\": {\n        \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n        \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n        \"postOfficeIndex\": 123456,\n        \"postOfficeType\": \"TRANSIT\",\n        \"state\": \"ARRIVED\",\n        \"date\": \"20-09-2023 19:00\"\n      },\n      \"operationHistory\": [\n        {\n          \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"postOfficeIndex\": 123456,\n          \"postOfficeType\": \"TRANSIT\",\n          \"state\": \"ARRIVED\",\n          \"date\": \"20-09-2023 19:00\"\n        },\n        {\n          \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"postOfficeIndex\": 123456,\n          \"postOfficeType\": \"TRANSIT\",\n          \"state\": \"ARRIVED\",\n          \"date\": \"20-09-2023 19:00\"\n        }\n      ]\n    },\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"type\": \"LETTER\",\n      \"senderName\": \"Ivan Ivanov\",\n      \"recipientIndex\": 234567,\n      \"recipientAddress\": \"Red Square, 1\",\n      \"recipientName\": \"Anna Volkova\",\n      \"lastOperation\": {\n        \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n        \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n        \"postOfficeIndex\": 123456,\n        \"postOfficeType\": \"TRANSIT\",\n        \"state\": \"ARRIVED\",\n        \"date\": \"20-09-2023 19:00\"\n      },\n      \"operationHistory\": [\n        {\n          \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"postOfficeIndex\": 123456,\n          \"postOfficeType\": \"TRANSIT\",\n          \"state\": \"ARRIVED\",\n          \"date\": \"20-09-2023 19:00\"\n        },\n        {\n          \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n          \"postOfficeIndex\": 123456,\n          \"postOfficeType\": \"TRANSIT\",\n          \"state\": \"ARRIVED\",\n          \"date\": \"20-09-2023 19:00\"\n        }\n      ]\n    }\n  ],\n  \"number\": 11600174,\n  \"sort\": {\n    \"empty\": true,\n    \"sorted\": true,\n    \"unsorted\": false\n  },\n  \"first\": true,\n  \"last\": true,\n  \"numberOfElements\": 75567187,\n  \"pageable\": {\n    \"offset\": -23490193,\n    \"sort\": {\n      \"empty\": false,\n      \"sorted\": false,\n      \"unsorted\": true\n    },\n    \"pageNumber\": -2944574,\n    \"pageSize\": -30756606,\n    \"unpaged\": false,\n    \"paged\": true\n  },\n  \"empty\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "Create new postal item",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"recipientAddress\": \"Spring Street, 22\",\n  \"recipientName\": \"Anna Volkova\",\n  \"senderName\": \"Ivan Ivanov\",\n  \"type\": \"LETTER\",\n  \"senderIndex\": 753614,\n  \"recipientIndex\": 123456\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/items",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"items"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"recipientAddress\": \"Spring Street, 22\",\n  \"recipientName\": \"Anna Volkova\",\n  \"senderName\": \"Ivan Ivanov\",\n  \"type\": \"LETTER\",\n  \"senderIndex\": 753614,\n  \"recipientIndex\": 123456\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/items",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"items"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n  \"type\": \"LETTER\",\n  \"senderName\": \"Ivan Ivanov\",\n  \"recipientIndex\": 234567,\n  \"recipientAddress\": \"Red Square, 1\",\n  \"recipientName\": \"Anna Volkova\",\n  \"lastOperation\": {\n    \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n    \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n    \"postOfficeIndex\": 123456,\n    \"postOfficeType\": \"TRANSIT\",\n    \"state\": \"ARRIVED\",\n    \"date\": \"20-09-2023 19:00\"\n  },\n  \"operationHistory\": [\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"postOfficeIndex\": 123456,\n      \"postOfficeType\": \"TRANSIT\",\n      \"state\": \"ARRIVED\",\n      \"date\": \"20-09-2023 19:00\"\n    },\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"postOfficeIndex\": 123456,\n      \"postOfficeType\": \"TRANSIT\",\n      \"state\": \"ARRIVED\",\n      \"date\": \"20-09-2023 19:00\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get by id itemDtoRs with its latest operation and with its operation history",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/items/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"items",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "ae3ba572-01d9-93ea-d955-fd8ffdf1773a",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/items/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"items",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "ae3ba572-01d9-93ea-d955-fd8ffdf1773a",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n  \"type\": \"LETTER\",\n  \"senderName\": \"Ivan Ivanov\",\n  \"recipientIndex\": 234567,\n  \"recipientAddress\": \"Red Square, 1\",\n  \"recipientName\": \"Anna Volkova\",\n  \"lastOperation\": {\n    \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n    \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n    \"postOfficeIndex\": 123456,\n    \"postOfficeType\": \"TRANSIT\",\n    \"state\": \"ARRIVED\",\n    \"date\": \"20-09-2023 19:00\"\n  },\n  \"operationHistory\": [\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"postOfficeIndex\": 123456,\n      \"postOfficeType\": \"TRANSIT\",\n      \"state\": \"ARRIVED\",\n      \"date\": \"20-09-2023 19:00\"\n    },\n    {\n      \"id\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"itemId\": \"c8cd3aee-62af-4239-a5da-23965734a733\",\n      \"postOfficeIndex\": 123456,\n      \"postOfficeType\": \"TRANSIT\",\n      \"state\": \"ARRIVED\",\n      \"date\": \"20-09-2023 19:00\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/app",
+			"type": "string"
+		}
+	]
+}
