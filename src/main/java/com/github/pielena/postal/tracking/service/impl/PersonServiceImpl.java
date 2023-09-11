@@ -16,11 +16,11 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Optional<Person> findByNameAndAddressDescription(String name, String addressDescription) {
-        return personRepository.findByNameAndAddress_Description(name, addressDescription);
+        return personRepository.findByNameAndAddressDescription(name, addressDescription);
     }
 
     @Override
     public Optional<Person> findByNameAndIndex(String name, int index) {
-        return personRepository.findByNameAndAddress_PostOffice_Index(name, index);
+        return personRepository.findByNameAndIndex(name, index);
     }
 }
