@@ -11,9 +11,9 @@ import java.util.UUID;
 @Repository
 public interface PersonRepository extends JpaRepository<Person, UUID> {
 
-    @Query("FROM Person p WHERE p.name = :name AND p.address.description = :addressDescription")
+    @Query("SELECT p FROM Person p WHERE p.name = :name AND p.address.description = :addressDescription")
     Optional<Person> findByNameAndAddressDescription(String name, String addressDescription);
 
-    @Query("FROM Person p WHERE p.name = :name AND p.address.postOffice.index = :index")
+    @Query("SELECT p FROM Person p WHERE p.name = :name AND p.address.postOffice.index = :index")
     Optional<Person> findByNameAndIndex(String name, int index);
 }
