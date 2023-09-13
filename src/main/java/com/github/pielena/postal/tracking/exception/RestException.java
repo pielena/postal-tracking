@@ -1,17 +1,16 @@
 package com.github.pielena.postal.tracking.exception;
 
 import lombok.Getter;
-import org.springframework.http.HttpStatus;
 
 @Getter
 public class RestException extends RuntimeException {
 
-    private final String msg;
-    private final HttpStatus httpStatus;
+    private final String code;
+    private final String message;
 
-    public RestException(String msg, HttpStatus httpStatus) {
-        super(msg);
-        this.msg = msg;
-        this.httpStatus = httpStatus;
+    public RestException(String code, String message) {
+        super(message);
+        this.code = code;
+        this.message = message;
     }
 }

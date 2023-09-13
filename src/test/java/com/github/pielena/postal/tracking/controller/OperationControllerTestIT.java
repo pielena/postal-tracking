@@ -70,7 +70,7 @@ class OperationControllerTestIT extends AbstractIntegrationTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.httpStatus").value("NOT_FOUND"))
+                .andExpect(jsonPath("$.code").value("Necessary resource not found"))
                 .andExpect(jsonPath("$.message").value("Item with Id: 7af49324-d3a3-4550-9448-38f00103565c not found"));
     }
 

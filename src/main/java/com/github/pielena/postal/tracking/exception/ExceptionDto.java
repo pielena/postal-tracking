@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,12 +16,9 @@ import java.util.List;
 @Builder
 public class ExceptionDto {
 
-    private HttpStatus httpStatus;
+    private String code;
 
     private String message;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String debugMessage;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<String> errors;
@@ -30,9 +26,16 @@ public class ExceptionDto {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime timestamp;
 
-    public ExceptionDto(HttpStatus httpStatus, String message) {
-        this.httpStatus = httpStatus;
+    public ExceptionDto(String code, String message) {
+        this.code = code;
         this.message = message;
+        this.timestamp = LocalDateTime.now();
+    }
+
+    public ExceptionDto(String code, String message, List<String> errors) {
+        this.code = code;
+        this.message = message;
+        this.errors = errors;
         this.timestamp = LocalDateTime.now();
     }
 }

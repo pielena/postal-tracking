@@ -2,7 +2,6 @@ package com.github.pielena.postal.tracking.dto;
 
 import com.github.pielena.postal.tracking.enums.ItemType;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,8 +24,7 @@ public class ItemDtoRq {
     private int senderIndex;
 
     @Schema(description = "sender name", example = "Ivan Ivanov")
-    @NotBlank(message = "name must be specified")
-    @Length(max = 100, message = "name can't be over 100 characters")
+    @Length(min = 3, max = 100, message = "name cannot be less than 3 and more than 100 characters long")
     private String senderName;
 
     @Schema(description = "destination post office index", example = "123456")
@@ -34,12 +32,10 @@ public class ItemDtoRq {
     private int recipientIndex;
 
     @Schema(description = "destination address description", example = "Spring Street, 22")
-    @NotBlank(message = "address must be specified")
-    @Length(max = 255, message = "address can't be over 255 characters")
+    @Length(min = 3, max = 255, message = "address cannot be less than 3 and more than 255 characters long")
     private String recipientAddress;
 
     @Schema(description = "recipient name", example = "Anna Volkova")
-    @NotBlank(message = "name must be specified")
-    @Length(max = 100, message = "name can't be over 100 characters")
+    @Length(min = 3, max = 100, message = "name cannot be less than 3 and more than 100 characters long")
     private String recipientName;
 }

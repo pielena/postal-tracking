@@ -15,28 +15,22 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
-import static org.springframework.http.HttpStatus.LENGTH_REQUIRED;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(RestException.class)
-    public ResponseEntity<ExceptionDto> handleException(RestException ex) {
-
-        return ResponseEntity.status(ex.getHttpStatus())
-                .body(ExceptionDto.builder()
-                        .message(ex.getMsg())
-                        .httpStatus(ex.getHttpStatus())
-                        .timestamp(LocalDateTime.now())
-                        .build()
-                );
+    @ExceptionHandler(S404NotFoundException.class)
+    public ResponseEntity<ExceptionDto> handleException(S404NotFoundException ex) {
+        return ResponseEntity
+                .status(NOT_FOUND)
+                .body(new ExceptionDto(ex.getCode(), ex.getMessage()));
     }
 
     @Override
@@ -47,44 +41,30 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
                 .collect(Collectors.toList());
 
-        ExceptionDto exceptionDto = ExceptionDto.builder()
-                .httpStatus(HttpStatus.BAD_REQUEST)
-                .message("Json invalid")
-                .errors(errors)
-                .timestamp(LocalDateTime.now())
-                .build();
-
-        return new ResponseEntity<>(exceptionDto, LENGTH_REQUIRED);
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(new ExceptionDto("Validation exception", "Request has invalid value", errors));
     }
 
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-
-        ExceptionDto exceptionDto = ExceptionDto.builder()
-                .httpStatus(HttpStatus.BAD_REQUEST)
-                .message(ex.getMessage())
-                .timestamp(LocalDateTime.now())
-                .build();
-
-        return new ResponseEntity<>(exceptionDto, HttpStatus.BAD_REQUEST);
+        return ResponseEntity
+                .status(BAD_REQUEST)
+                .body(new ExceptionDto("Message not readable", ex.getMessage()));
     }
 
     @Override
     protected ResponseEntity<Object> handleNoHandlerFoundException(NoHandlerFoundException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-
-        ExceptionDto exceptionDto = new ExceptionDto(NOT_FOUND, "No handler found");
-        exceptionDto.setDebugMessage(String.format("Could not find the %s method for URL %s", ex.getHttpMethod(), ex.getRequestURL()));
-
-        return new ResponseEntity<>(exceptionDto, NOT_FOUND);
+        return ResponseEntity
+                .status(NOT_FOUND)
+                .body(new ExceptionDto("No handler found", String.format("Could not find the %s method for URL %s", ex.getHttpMethod(), ex.getRequestURL())));
     }
 
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
-
-        ExceptionDto exceptionDto = new ExceptionDto(INTERNAL_SERVER_ERROR, "Something went wrong");
-        exceptionDto.setDebugMessage(ex.getMessage());
-
-        return new ResponseEntity<>(exceptionDto, INTERNAL_SERVER_ERROR);
+        return ResponseEntity
+                .status(INTERNAL_SERVER_ERROR)
+                .body(new ExceptionDto("Something went wrong", ex.getMessage()));
     }
 }
 
