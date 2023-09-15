@@ -14,7 +14,7 @@ information and the entire history of movements of a certain postal item.
 
 - Java 17
 - Spring Boot 3.1.2
-- PostgreSQL, Spring JPA
+- PostgreSQL, Spring Data JPA
 - Maven
 - Docker (for TestContainers)
 - Flyway 
@@ -22,20 +22,8 @@ information and the entire history of movements of a certain postal item.
 
 ### Getting started:
 
-There are two ways to run the app: you can get .war and deploy it 
-to your server, or you can work with .jar
-
-#### Common steps:
 - Clone the project from GitHub
 - You need to specify the correct database settings in application.yml
-
-#### Getting started with .war :
-- In the pom.xml file you need to activate two sections: line 15 with 
-the packaging type and spring-boot-starter-tomcat dependency
-- Use maven to build .war file of the project
-- deploy .war to your server
-
-#### Getting started with .jar :
 - The best way to run the project is with IDE like IntelliJ IDEA.
 
 ### Usage:
@@ -46,8 +34,6 @@ for your DB
 You can use it for testing.
 - You can also see all available endpoints by visiting 
 http://localhost:8080/app/swagger-ui/index.htm (change prefix if necessary)
-- You can also find the file "test-report-2023-09-03.png" in the /develop 
-folder to see the test coverage report
 
 ### Contacts:
 
